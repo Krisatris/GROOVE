@@ -1,3 +1,4 @@
+/*
 let changeColor = document.getElementById('changeColor');
 
 chrome.storage.sync.get('color', function(data) { 
@@ -13,7 +14,7 @@ changeColor.onclick = function(element) {
             {code: 'document.body.style.backgroundColor = "' + color + '";'});
     });
 };
-
+*/
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     let currUrl = tabs[0].url;
     document.write('<h1>You are currently on: </h1>');

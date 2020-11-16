@@ -17,6 +17,7 @@ changeColor.onclick = function(element) {
 */
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     let currUrl = tabs[0].url;
-    document.write('<h1>You are currently on: </h1>');
-    document.write(currUrl);
+    let currTitle = tabs[0].title;
+    document.getElementById('webTitle').innerHTML = currTitle;
+    document.getElementById('webURL').innerHTML = currUrl;
 });

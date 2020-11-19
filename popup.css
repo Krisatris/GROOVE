@@ -1,7 +1,54 @@
 html, body {
-    min-width: 300px;
-    min-height: 400px;
-    max-height: 100%;
+    margin: 0;
+    width: 300px;
+    height: 400px;
     position: relative;
     vertical-align: middle;
+}
+
+.logobar {
+    width: 100%;
+    height: 45px;
+    background-color: #ffffff;
+    position: relative;
+    display: inline-block;
+}
+
+.logobar img{
+    margin-left: 7px;
+}
+
+.logobar h1{
+    display: inline-block;
+    color: #359973;
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 53px;
+}
+
+.websiteBar{
+    width: 100%;
+    height: 45px;
+    background-color: #f3f2f2;
+}
+
+.websiteBar h3{
+    display: inline-block;
+    color: #303030;
+    font-family: 'Ubuntu', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.rating{
+    width: 100%;
+    height: 250px;
+    background-color: #eaffb9;
+}
+
+.bigRating{
+    width: 50%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -18,6 +18,6 @@ changeColor.onclick = function(element) {
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     let currUrl = tabs[0].url;
     let currTitle = tabs[0].title;
-    document.getElementById('webTitle').innerHTML = currTitle;
+    //document.getElementById('webTitle').innerHTML = currTitle;
     document.getElementById('webURL').innerHTML = currUrl;
 });

@@ -3,13 +3,20 @@
     <head>
         <title>Groove Popup</title>
         <link rel="stylesheet" type="text/css" href="popup.css"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div class="topnav">
-            <h1>You are currently on:</h1>
+        <div class="logobar">
+            <img src="images/groove-32.png">
+            <h1>GROOVE</h1>
         </div>
-        <p name="webTitle" id="webTitle"></p>
-        <p name="webURL" id="webURL"></p>
+        <div class="websiteBar">
+            <h3 id="webURL"></h3>
+        </div>
+        <div class="rating">
+            <img class="bigRating" src="images/test-score.png">
+        </div>
         <script src="popup.js"></script>
     </body>
 </html>

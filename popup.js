@@ -18,6 +18,30 @@ changeColor.onclick = function(element) {
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     let currUrl = tabs[0].url;
     let currTitle = tabs[0].title;
+    var bigRating = "images/score-10.png";
+    var carbonImg = "images/score-10.png";
+    var wasteImg = "images/score-10.png";
+    var tradeImg = "images/score-10.png";
+    if(currUrl.includes("amazon")) {
+        currUrl = "Amazon";
+        bigRating = "images/score-2.png";
+        carbonImg = "images/score-4.png";
+        wasteImg = "images/score-1.png";
+        tradeImg = "images/score-2.png";
+        console.log(bigRating);
+    }
+    else if(currUrl.includes("losangeles")) {
+        currUrl = "Los Angeles Apparel";
+        bigRating = "images/score-10.png";
+        carbonImg = "images/score-10.png";
+        wasteImg = "images/score-10.png";
+        tradeImg = "images/score-10.png";
+    }
     //document.getElementById('webTitle').innerHTML = currTitle;
+    console.log(bigRating);
     document.getElementById('webURL').innerHTML = currUrl;
+    document.getElementById('bigRating').src = bigRating;
+    document.getElementById('carbonImg').src = carbonImg;
+    document.getElementById('wasteImg').src = wasteImg;
+    document.getElementById('tradeImg').src = tradeImg;
 });

@@ -14,6 +14,11 @@ html, body {
     display: inline-block;
 }
 
+p {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
 .logobar img{
     margin-left: 7px;
 }
@@ -41,14 +46,32 @@ html, body {
 
 .rating{
     width: 100%;
-    height: 250px;
+    height: 300px;
     background-color: #eaffb9;
 }
 
 .bigRating{
-    width: 50%;
+    width: 35%;
     height: auto;
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.carbonImg {
+    width: 15%;
+    height: auto;
+    margin-left: 80px;
+}
+
+.wasteImg {
+    width: 15%;
+    height: auto;
+    margin-left: 100px;
+}
+
+.tradeImg {
+    width: 15%;
+    height: auto;
+    margin-left: 70px;
 }

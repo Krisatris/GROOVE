@@ -45,3 +45,21 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     document.getElementById('wasteImg').src = wasteImg;
     document.getElementById('tradeImg').src = tradeImg;
 });
+
+var recoClick = document.getElementById("recommendations");
+recoClick.onclick = changePage;
+
+function changePage(event) {
+    document.getElementById("websiteBar").style.display = "none";
+    document.getElementById("bigRating").style.display = "none";
+    document.getElementById("smallBox").style.display = "none";
+    document.getElementById("recommendations").style.display = "none";
+    document.getElementById("otherOptions").style.display = "block";
+}
+
+var LAClick = document.getElementById("otherOptions");
+LAClick.onclick = openPage;
+
+function openPage(event) {
+    window.open("https://losangelesapparel.net/collections/women-sweatshirts-heavy-fleece/products/hf09gd-unisex-garment-dye-14oz-heavy-fleece-hooded-pullover-sweatshirt?variant=8694280650858");
+}

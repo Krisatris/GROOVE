@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <title>Groove Popup</title>
         <link rel="stylesheet" type="text/css" href="popup.css"/>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
     </head>
+
     <body>
         <div class="logobar">
             <img src="images/groove-32.png">
@@ -14,6 +16,16 @@
         <div class="websiteBar" id="websiteBar">
             <h3 id="webURL"></h3>
         </div>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-analytics.js"></script>
+        
+        <script type="text/javascript" src="firebaseConfig.js"></script>
+
         <div class="rating">
             <img class="otherOptions" id="otherOptions" src="images/other-options.png">
             <img class="bigRating" id="bigRating" src="">
@@ -26,6 +38,7 @@
                 <p>see alternate product recommendations</p>
             </div>
         </div>
+
         <script src="popup.js"></script>
     </body>
 </html>

@@ -39,7 +39,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     }
     //document.getElementById('webTitle').innerHTML = currTitle;
     console.log(bigRating);
-    document.getElementById('webURL').innerHTML = currUrl;
+    document.getElementById('webURL').innerHTML = currTitle;
     document.getElementById('bigRating').src = bigRating;
     document.getElementById('carbonImg').src = carbonImg;
     document.getElementById('wasteImg').src = wasteImg;

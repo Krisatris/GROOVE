@@ -1,1 +1,4 @@
 firebaseConfig.js
+firebase-app.js
+firebase-analytics.js
+firebase-database.js

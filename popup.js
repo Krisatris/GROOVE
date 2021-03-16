@@ -15,9 +15,25 @@ changeColor.onclick = function(element) {
     });
 };
 */
+
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
-    let currUrl = tabs[0].url;
+    var query = firebase.database().ref().orderByKey();
     let currTitle = tabs[0].title;
+    let currUrl = tabs[0].url;
+    let carbonScore = null;
+    let tradeScore = null;
+    let wasteScore = null;
+    query.once("value").then(function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+            console.log(childSnapshot.key);
+            if(currTitle.toLowerCase().includes(childSnapshot.key.toLowerCase())) {
+                currTitle = childSnapshot.key;
+                carbonScore = childSnapshot.child("Carbon/Score").val();
+                tradeScore = childSnapshot.child("Trade/Score").val();
+                wasteScore = childSnapshot.child("Waste/Score").val();
+            }
+        });
+    });
     var bigRating = "images/score-10.png";
     var carbonImg = "images/score-10.png";
     var wasteImg = "images/score-10.png";
@@ -28,7 +44,6 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
         carbonImg = "images/score-4.png";
         wasteImg = "images/score-1.png";
         tradeImg = "images/score-2.png";
-        console.log(bigRating);
     }
     else if(currUrl.includes("losangeles")) {
         currUrl = "Los Angeles Apparel";
@@ -38,7 +53,6 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
         tradeImg = "images/score-10.png";
     }
     //document.getElementById('webTitle').innerHTML = currTitle;
-    console.log(bigRating);
     document.getElementById('webURL').innerHTML = currTitle;
     document.getElementById('bigRating').src = bigRating;
     document.getElementById('carbonImg').src = carbonImg;

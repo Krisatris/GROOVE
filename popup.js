@@ -35,8 +35,17 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
 
                 averageScore = (carbonScore + tradeScore + wasteScore) / 3;
                 averageScore = Math.round(averageScore);
+            } else {
+                carbonScore = -1;
+                tradeScore = -1;
+                wasteScore = -1;
             }
-            var bigRating = setImage(averageScore);
+            var bigRating = null;
+            if(averageScore > 0) {
+                bigRating = setImage(averageScore);
+            } else {
+                bigRating = "images/bigscore-na.png";
+            }
             var carbonImg = setImage(carbonScore);
             var tradeImg = setImage(tradeScore);
             var wasteImg = setImage(wasteScore);
@@ -119,6 +128,7 @@ function setImage(ratingNum) {
             ratingImg = "images/score-10.png";
             break;
         default:
+            ratingImg = "images/score-na.png";
             break;
     }
     return ratingImg;

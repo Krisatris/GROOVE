@@ -16,90 +16,57 @@ changeColor.onclick = function(element) {
 };
 */
 var query = firebase.database().ref().orderByKey();
+let websiteFound = false;
+let websiteInfo = null;
 
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     let currTitle = tabs[0].title;
     //let currUrl = tabs[0].url;
+    query.once("value").then(function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+            if(currTitle.toLowerCase().includes(childSnapshot.key.toLowerCase())) {
+                console.log("website found");
+                websiteInfo = childSnapshot;
+                websiteFound = true;
+            }
+        });
+        setScoreImages(websiteFound, websiteInfo, currTitle);
+    });
+});
+
+function setScoreImages(websiteFound, websiteInfo, currTitle) {
     let carbonScore = null;
     let tradeScore = null;
     let wasteScore = null;
     let averageScore = null;
-    query.once("value").then(function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-            if(currTitle.toLowerCase().includes(childSnapshot.key.toLowerCase())) {
-                currTitle = childSnapshot.key;
+    if(websiteFound) {
+        currTitle = websiteInfo.key;
+        carbonScore = websiteInfo.child("Carbon/Score").val();
+        tradeScore = websiteInfo.child("Trade/Score").val();
+        wasteScore = websiteInfo.child("Waste/Score").val();
 
-                carbonScore = childSnapshot.child("Carbon/Score").val();
-                tradeScore = childSnapshot.child("Trade/Score").val();
-                wasteScore = childSnapshot.child("Waste/Score").val();
-
-                averageScore = (carbonScore + tradeScore + wasteScore) / 3;
-                averageScore = Math.round(averageScore);
-            } else {
-                carbonScore = -1;
-                tradeScore = -1;
-                wasteScore = -1;
-            }
-            var bigRating = null;
-            if(averageScore > 0) {
-                bigRating = setImage(averageScore);
-            } else {
-                bigRating = "../images/bigscore-na.png";
-            }
-            var carbonImg = setImage(carbonScore);
-            var tradeImg = setImage(tradeScore);
-            var wasteImg = setImage(wasteScore);
-
-            document.getElementById('webURL').innerHTML = currTitle;
-            document.getElementById('bigRating').src = bigRating;
-            document.getElementById('carbonImg').src = carbonImg;
-            document.getElementById('wasteImg').src = wasteImg;
-            document.getElementById('tradeImg').src = tradeImg;
-        });
-    });
-    /*
-    if(currUrl.includes("amazon")) {
-        currUrl = "Amazon";
-        bigRating = "images/score-2.png";
-        carbonImg = "images/score-4.png";
-        wasteImg = "images/score-1.png";
-        tradeImg = "images/score-2.png";
+        averageScore = (carbonScore + tradeScore + wasteScore) / 3;
+        averageScore = Math.round(averageScore);
+    } else {
+        carbonScore = -1;
+        tradeScore = -1;
+        wasteScore = -1;
     }
-    else if(currUrl.includes("losangeles")) {
-        currUrl = "Los Angeles Apparel";
-        bigRating = "images/score-10.png";
-        carbonImg = "images/score-10.png";
-        wasteImg = "images/score-10.png";
-        tradeImg = "images/score-10.png";
+    let carbonImg = setImage(carbonScore);
+    let tradeImg = setImage(tradeScore);
+    let wasteImg = setImage(wasteScore);
+    let bigRating = null;
+    if(averageScore > 0) {
+        bigRating = setImage(averageScore);
+    } else {
+        bigRating = "../images/bigscore-na.png";
     }
-    */
-    //document.getElementById('webTitle').innerHTML = currTitle;
-});
 
-/*
-var recoClick = document.getElementById("recommendations");
-recoClick.onclick = changePage;
-
-function changePage(event) {
-    document.getElementById("websiteBar").style.display = "none";
-    document.getElementById("bigRating").style.display = "none";
-    document.getElementById("smallBox").style.display = "none";
-    document.getElementById("recommendations").style.display = "none";
-    document.getElementById("otherOptions").style.display = "block";
-}
-*/
-
-var button1Click = document.getElementById("button1");
-var button2Click = document.getElementById("button2");
-button1Click.onclick = openReco;
-button2Click.onclick = openRating;
-
-function openReco(event) {
-    window.open("https://adodd301.wixsite.com/website/about-3-1-1");
-}
-
-function openRating(event) {
-    window.open("https://adodd301.wixsite.com/website/news-2-1");
+    document.getElementById('webURL').innerHTML = currTitle;
+    document.getElementById('bigRating').src = bigRating;
+    document.getElementById('carbonImg').src = carbonImg;
+    document.getElementById('wasteImg').src = wasteImg;
+    document.getElementById('tradeImg').src = tradeImg;
 }
 
 function setImage(ratingNum) {
@@ -140,4 +107,17 @@ function setImage(ratingNum) {
             break;
     }
     return ratingImg;
+}
+
+var button1Click = document.getElementById("button1");
+var button2Click = document.getElementById("button2");
+button1Click.onclick = openReco;
+button2Click.onclick = openRating;
+
+function openReco(event) {
+    window.open("https://adodd301.wixsite.com/website/about-3-1-1");
+}
+
+function openRating(event) {
+    window.open("https://adodd301.wixsite.com/website/news-2-1");
 }

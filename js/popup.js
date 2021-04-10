@@ -44,7 +44,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
             if(averageScore > 0) {
                 bigRating = setImage(averageScore);
             } else {
-                bigRating = "images/bigscore-na.png";
+                bigRating = "../images/bigscore-na.png";
             }
             var carbonImg = setImage(carbonScore);
             var tradeImg = setImage(tradeScore);
@@ -76,6 +76,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     //document.getElementById('webTitle').innerHTML = currTitle;
 });
 
+/*
 var recoClick = document.getElementById("recommendations");
 recoClick.onclick = changePage;
 
@@ -86,49 +87,56 @@ function changePage(event) {
     document.getElementById("recommendations").style.display = "none";
     document.getElementById("otherOptions").style.display = "block";
 }
+*/
 
-var LAClick = document.getElementById("otherOptions");
-LAClick.onclick = openPage;
+var button1Click = document.getElementById("button1");
+var button2Click = document.getElementById("button2");
+button1Click.onclick = openReco;
+button2Click.onclick = openRating;
 
-function openPage(event) {
-    window.open("https://losangelesapparel.net/collections/women-sweatshirts-heavy-fleece/products/hf09gd-unisex-garment-dye-14oz-heavy-fleece-hooded-pullover-sweatshirt?variant=8694280650858");
+function openReco(event) {
+    window.open("https://adodd301.wixsite.com/website/about-3-1-1");
+}
+
+function openRating(event) {
+    window.open("https://adodd301.wixsite.com/website/news-2-1");
 }
 
 function setImage(ratingNum) {
     let ratingImg = "";
     switch(ratingNum) {
         case 1:
-            ratingImg = "images/score-1.png";
+            ratingImg = "../images/score-1.png";
             break;
         case 2:
-            ratingImg = "images/score-2.png";
+            ratingImg = "../images/score-2.png";
             break;
         case 3:
-            ratingImg = "images/score-3.png";
+            ratingImg = "../images/score-3.png";
             break;
         case 4:
-            ratingImg = "images/score-4.png";
+            ratingImg = "../images/score-4.png";
             break;
         case 5:
-            ratingImg = "images/score-5.png";
+            ratingImg = "../images/score-5.png";
             break;
         case 6:
-            ratingImg = "images/score-6.png";
+            ratingImg = "../images/score-6.png";
             break;
         case 7:
-            ratingImg = "images/score-7.png";
+            ratingImg = "../images/score-7.png";
             break;
         case 8:
-            ratingImg = "images/score-8.png";
+            ratingImg = "../images/score-8.png";
             break;
         case 9:
-            ratingImg = "images/score-9.png";
+            ratingImg = "../images/score-9.png";
             break;
         case 10:
-            ratingImg = "images/score-10.png";
+            ratingImg = "../images/score-10.png";
             break;
         default:
-            ratingImg = "images/score-na.png";
+            ratingImg = "../images/score-na.png";
             break;
     }
     return ratingImg;

@@ -3,14 +3,14 @@
 
     <head>
         <title>Groove Popup</title>
-        <link rel="stylesheet" type="text/css" href="popup.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/popup.css"/>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
     </head>
 
     <body>
         <div class="logobar">
-            <img src="images/groove-32.png">
+            <img src="../images/groove-32.png">
             <h1>GROOVE</h1>
         </div>
         <div class="websiteBar" id="websiteBar">
@@ -18,23 +18,23 @@
         </div>
 
         <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="firebase-app.js"></script>
-        <script src="firebase-database.js"></script>
+        <script src="../js/firebase-app.js"></script>
+        <script src="../js/firebase-database.js"></script>
         
-        <script type="text/javascript" src="firebaseConfig.js"></script>
+        <script type="text/javascript" src="../js/firebaseConfig.js"></script>
 
         <div class="rating">
-            <img class="otherOptions" id="otherOptions" src="images/other-options.png">
+            <img class="otherOptions" id="otherOptions" src="../images/other-options.png">
             <img class="bigRating" id="bigRating" src="">
             <div class="smallBox" id="smallBox">
                 <p>carbon emission<img class="carbonImg" id="carbonImg" src=""></p>
                 <p>waste impact<img class="wasteImg" id="wasteImg" src=""></p>
                 <p>fair trade standard<img class="tradeImg" id="tradeImg" src=""></p>
             </div>
-            <button class="button button1">alternative recommendations</button>
-            <button class="button button2">info on ratings</button>
+            <button class="button button1" id="button1">alternative recommendations</button>
+            <button class="button button2" id="button2">info on ratings</button>
         </div>
 
-        <script src="popup.js"></script>
+        <script src="../js/popup.js"></script>
     </body>
 </html>

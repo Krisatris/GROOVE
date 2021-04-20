@@ -3,11 +3,7 @@
     "version": "1.0",
     "description": "Lightweight extension to show the eco footprint of online retailers",
     "permissions": [
-        "activeTab", 
-        "declarativeContent", 
-        "storage", 
-        "tabs",
-        "<all_urls>"
+        "activeTab"
     ],
     "options_page": "html/options.html",
     "background": {
